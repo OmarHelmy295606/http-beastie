@@ -18,7 +18,10 @@ http::response<http::string_body> handle_request(const http::request<http::strin
     if (req.target() == "/") {
       res.result(http::status::ok);
       res.body() = read_file("static/index.html");
-    } else {
+    } else if(req.target() == "/helmy"){
+		res.result(http::status::ok);
+		res.body() = read_file("static/helmy.html");
+     }else {
       res.result(http::status::not_found);
       res.body() = "<h1 style=\"text-align: center;\">404 Not Found</h1>";
     }
